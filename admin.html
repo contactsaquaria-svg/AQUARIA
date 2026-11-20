@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AQUARIA – Brand Administration & CMS Portal</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%23642D40'>A</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+  <!-- ==================== LOGIN GATE ==================== -->
+  <div id="adminLoginOverlay" style="display:flex;position:fixed;inset:0;z-index:9999;background:#1a0d10;align-items:center;justify-content:center;font-family:'Plus Jakarta Sans',sans-serif;">
+    <div style="background:#2a1419;border:1px solid #3d1e25;border-radius:16px;padding:48px 40px;width:100%;max-width:400px;box-shadow:0 24px 64px rgba(0,0,0,0.6);text-align:center;">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;letter-spacing:0.2em;color:#C4A477;margin-bottom:4px;">AQUARIA</div>
+      <div style="font-size:0.78rem;color:#9e7a85;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:36px;">Admin CMS Portal</div>
+      <form onsubmit="handleAdminLogin(event)">
+        <input
+          type="password"
+          id="adminPasswordInput"
+          placeholder="Enter admin password"
+          autocomplete="current-password"
+          required
+          style="width:100%;box-sizing:border-box;padding:14px 16px;border:1px solid #3d1e25;border-radius:8px;background:#1a0d10;color:#f5ede8;font-size:0.95rem;font-family:inherit;margin-bottom:14px;outline:none;"
+          onfocus="this.style.borderColor='#C4A477'" onblur="this.style.borderColor='#3d1e25'"
+        >
+        <button
+          id="loginSubmitBtn"
+          type="submit"
+          style="width:100%;padding:14px;background:#642D40;color:#fff;border:none;border-radius:8px;font-size:0.9rem;font-weight:600;letter-spacing:0.08em;cursor:pointer;font-family:inherit;transition:background 0.2s;"
+          onmouseover="this.style.background='#7a3550'" onmouseout="this.style.background='#642D40'"
+        >Sign In</button>
+        <div id="loginError" style="display:none;margin-top:12px;color:#e57373;font-size:0.82rem;"></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================== SIDEBAR ==================== -->
+  <aside class="admin-sidebar">
+    <div class="sidebar-brand">
+      <div class="sidebar-logo">AQUARIA</div>
+      <div class="sidebar-sub">Control Center & CMS</div>
+    </div>
+
+    <div class="sidebar-menu">
+      <button class="nav-item active" data-target="dashboard">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+        <span>Dashboard</span>
+      </button>
+
+      <button class="nav-item" data-target="hero">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+        <span>Hero & Banners</span>
+      </button>
+
+      <button class="nav-item" data-target="departments">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line></svg>
+        <span>Department Posters</span>
+      </button>
+
+      <button class="nav-item" data-target="products">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+        <span>Products & Prices</span>
+      </button>
+
+      <button class="nav-item" data-target="story">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+        <span>Brand Story & Text</span>
+      </button>
+
+      <button class="nav-item" data-target="highlights">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+        <span>Why AQUARIA</span>
+      </button>
+
+      <button class="nav-item" data-target="diary">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path></svg>
+        <span>Style Diary & Photos</span>
+      </button>
+
+      <button class="nav-item" data-target="reviews">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+        <span>Customer Reviews</span>
+      </button>
+
+      <button class="nav-item" data-target="contact">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+        <span>Contact & Atelier</span>
+      </button>
+
+      <button class="nav-item" data-target="policies">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+        <span>Policies & Guides</span>
+      </button>
+
+      <button class="nav-item" data-target="orders">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+        <span>Customer Orders</span>
+      </button>
+    </div>
+
+    <div class="sidebar-footer">
+      <a href="/" target="_blank" class="view-store-btn">
+        <span>View Live Website</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+      </a>
+    </div>
+  </aside>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main class="admin-main">
+    
+    <!-- 1. DASHBOARD VIEW -->
+    <section id="section-dashboard" class="admin-section-view">
+      <div class="admin-header">
+        <div>
+          <h1>AQUARIA Atelier Control Center</h1>
+          <p style="color: var(--admin-muted); font-size: 0.9rem;">Manage all website wording, banners, photos, bags, footwear, prices, and orders in real-time.</p>
+        </div>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-title">Total Active Pieces</div>
+          <div id="statTotalProducts" class="stat-value">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-title">Handbags & Totes</div>
+          <div id="statTotalBags" class="stat-value">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-title">Handmade Footwear</div>
+          <div id="statTotalShoes" class="stat-value">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-title">Storefront Orders</div>
+          <div id="statTotalOrders" class="stat-value">0</div>
+        </div>
+      </div>
+
+      <div class="admin-card">
+        <div class="card-header-row">
+          <h3 class="card-title">Quick Actions</h3>
+        </div>
+        <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+          <button class="admin-btn admin-btn-primary" onclick="switchSection('products'); openNewProductModal();">
+            + Add New Bag or Footwear
+          </button>
+          <button class="admin-btn admin-btn-secondary" onclick="switchSection('hero');">
+            Edit Hero Banner & Words
+          </button>
+          <button class="admin-btn admin-btn-secondary" onclick="switchSection('departments');">
+            Update Department Posters
+          </button>
+          <button class="admin-btn admin-btn-secondary" onclick="switchSection('orders');">
+            View Recent Orders
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. HERO & ANNOUNCEMENT VIEW -->
+    <section id="section-hero" class="admin-section-view" style="display: none;">
+      <div class="admin-header">
+        <div>
+          <h1>Hero Campaign & Announcement</h1>
+          <p style="color: var(--admin-muted); font-size: 0.9rem;">Edit top announcement bar, main heading, tagline, buttons and cover photography.</p>
+        </div>
+        <button class="admin-btn admin-btn-primary" onclick="saveHeroSettings(event)">Save Changes</button>
+      </div>
+
+      <div class="admin-card">
+        <h3 class="card-title" style="margin-bottom: 18px;">Top Announcement Bar & Policies</h3>
+        <div class="form-grid">
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label class="form-label">Announcement Bar Text</label>
+            <input type="text" id="brandAnnouncement" class="form-input">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Brand Tagline</label>
+            <input type="text" id="brandTagline" class="form-input">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Complimentary Shipping Threshold (₹)</label>
+            <input type="number" id="brandShippingThreshold" class="form-input">
+          </div>
+        </div>
+      </div>
+
+      <div class="admin-card">
+        <h3 class="card-title" style="margin-bottom: 18px;">Hero Campaign Editorial</h3>
+        <div class="form-grid">
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label class="form-label">Sub-Tag / Collection Intro</label>
+            <input type="text" id="heroTag" class="form-input">
+          </div>
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label class="form-label">Main Heading</label>
+            <textarea id="heroTitle" rows="2" class="form-textarea"></textarea>
+          </div>
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label class="form-label">Supporting Text</label>
+            <textarea id="heroDescription" rows="2" class="form-textarea"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Button 1 Label</label>
+            <input type="text" id="heroBtnBags" class="form-input">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Button 2 Label</label>
+            <input type="text" id="heroBtnFootwear" class="form-input">
+          </div>
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label class="form-label">Hero Full-Width Campaign Photo URL</label>
+            <input type="text" id="heroImage" class="form-input" oninput="setPreview('heroImagePreview', this.value)">
+            <div class="image-uploader-box">
+              <img id="heroImagePreview" class="image-preview" src="">
+              <label class="admin-btn admin-btn-secondary" style="cursor: pointer;">
+                Browse & Upload Local Photo
+                <input type="file" accept="image/*" style="display: none;" onchange="uploadImageForField(this, 'heroImage', 'heroImagePreview')">
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. DEPARTMENT POSTERS VIEW -->
+    <section id="section-departments" class="admin-section-view" style="display: none;">
+      <div class="admin-header">
+        <div>
+          <h1>Department Banners & Posters</h1>
+          <p style="color: var(--admin-muted); font-size: 0.9rem;">Customize posters, headings, descriptions and imagery for both Bag and Footwear departments.</p>
+        </div>
+        <button class="admin-btn admin-btn-primary" onclick="saveDepartments(event)">Save Posters</button>
+      </div>
+
+      <!-- Department 1: Bags -->
+      <div class="admin-card">
+        <h3 class="card-title" style="margin-bottom: 18px; color: var(--admin-burgundy);">Department One: AQUARIA Bags</h3>
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">Poster Heading</label>
+            <input type="text" id="deptBagsTitle" class="form-input">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Subtitle</label>
+            <input type="text" id="deptBagsSubtitle" class="form-input">
+          </div>
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label class="form-label">Description Wording</label>
+            <textarea id="deptBagsDesc" rows="2" class="form-textarea"></textarea>
+          </div>
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label class="form-label">Cover Poster Photo URL</label>
+            <input type="text" id="deptBagsImage" class="form-input" oninput="setPreview('deptBagsImagePreview', this.value)">
+            <div class="image-uploader-box">
+              <img id="deptBagsImagePreview" class="image-preview" src="">
+              <label class="admin-btn admin-btn-secondary" style="cursor: pointer;">
+                Upload Bags Poster
+                <input type="file" accept="image/*" style="display: none;" onchange="uploadImageForField(this, 'deptBagsImage', 'deptBagsImagePreview')">
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Department 2: Footwear -->
+      <div class="admin-card">
+        <h3 class="card-title" style="margin-bottom: 18px; color: var(--admin-espresso);">Department Two: Handmade Footwear Atelier</h3>
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">Poster Heading</label>
+            <input type="text" id="deptShoesTitle" class="form-input">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Subtitle</label>
+            <input type="text" id="deptShoesSubtitle" class="form-input">
+          </div>
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label class="form-label">Description Wording</label>
+            <textarea id="deptShoesDesc" rows="2" class="form-textarea"></textarea>
+          </div>
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label class="form-label">Cover Poster Photo URL</label>
+            <input type="text" id="deptShoesImage" class="form-input" oninput="setPreview('deptShoesImagePreview', this.value)">
+            <div class="image-uploader-box">
+              <img id="deptShoesImagePreview" class="image-preview" src="">
+              <label class="admin-btn admin-btn-secondary" style="cursor: pointer;">
+                Upload Footwear Poster
+                <input type="file" accept="image/*" style="display: none;" onchange="uploadImageForField(this, 'deptShoesImage', 'deptShoesImagePreview')">
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. PRODUCTS & PRICES VIEW -->
+    <section id="section-products" class="admin-section-view" style="display: none;">
+      <div class="admin-header">
+        <div>
+          <h1>Product Catalog & Prices Manager</h1>
+          <p style="color: var(--admin-muted); font-size: 0.9rem;">Change product prices in ₹, update photos, edit shoe sizes, add new arrivals, or delete items.</p>
+        </div>
+        <button class="admin-btn admin-btn-primary" onclick="openNewProductModal()">+ Add New Product</button>
+      </div>
+
+      <div class="admin-card">
+        <div class="card-header-row">
+          <div style="display: flex; gap: 8px;">
+            <button class="admin-btn admin-btn-secondary" onclick="filterCatalog('all')">All Products</button>
+            <button class="admin-btn admin-btn-secondary" onclick="filterCatalog('bags')">Bags Only</button>
+            <button class="admin-btn admin-btn-secondary" onclick="filterCatalog('footwear')">Footwear Only</button>
+          </div>
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Photo</th>
+                <th>Product Name & Category</th>
+                <th>Department</th>
+                <th>Price (INR)</th>
+                <th>Sizes Available</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="productsTableBody">
+              <!-- Populated by admin.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. BRAND STORY VIEW -->
+    <section id="section-story" class="admin-section-view" style="display: none;">
+      <div class="admin-header">
+        <div>
+          <h1>Brand Story & Manifesto</h1>
+          <p style="color: var(--admin-muted); font-size: 0.9rem;">Edit "Fashion That Carries Your Story", philosophy paragraphs and collage photos.</p>
+        </div>
+        <button class="admin-btn admin-btn-primary" onclick="saveStorySettings(event)">Save Story</button>
+      </div>
+
+      <div class="admin-card">
+        <div class="form-grid">
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label class="form-label">Sub-Tag</label>
+            <input type="text" id="storyTag" class="form-input">
+          </div>
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label class="form-label">Main Heading</label>
+            <input type="text" id="storyHeading" class="form-input">
+          </div>
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label class="form-label">Paragraph 1</label>
+            <textarea id="storyPara1" rows="3" class="form-textarea"></textarea>
+          </div>
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label class="form-label">Paragraph 2</label>
+            <textarea id="storyPara2" rows="3" class="form-textarea"></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Collage Photo 1 (Bag Craft)</label>
+            <input type="text" id="storyImage1" class="form-input" oninput="setPreview('storyImage1Preview', this.value)">
+            <div class="image-uploader-box">
+              <img id="storyImage1Preview" class="image-preview" src="">
+              <label class="admin-btn admin-btn-secondary" style="cursor: pointer;">
+                Upload Photo 1
+                <input type="file" accept="image/*" style="display: none;" onchange="uploadImageForField(this, 'storyImage1', 'storyImage1Preview')">
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Collage Photo 2 (Footwear Craft)</label>
+            <input type="text" id="storyImage2" class="form-input" oninput="setPreview('storyImage2Preview', this.value)">
+            <div class="image-uploader-box">
+              <img id="storyImage2Preview" class="image-preview" src="">
+              <label class="admin-btn admin-btn-secondary" style="cursor: pointer;">
+                Upload Photo 2
+                <input type="file" accept="image/*" style="display: none;" onchange="uploadImageForField(this, 'storyImage2', 'storyImage2Preview')">
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. WHY AQUARIA VIEW -->
+    <section id="section-highlights" class="admin-section-view" style="display: none;">
+      <div class="admin-header">
+        <div>
+          <h1>Why AQUARIA — 4 Brand Pillars</h1>
+          <p style="color: var(--admin-muted); font-size: 0.9rem;">Modify the four key trust and craftsmanship claims displayed on the website.</p>
+        </div>
+        <button class="admin-btn admin-btn-primary" onclick="saveWhyAquaria(event)">Save Pillars</button>
+      </div>
+
+      <div class="form-grid">
+        <div class="admin-card">
+          <h4 style="margin-bottom: 12px; color: var(--admin-burgundy);">Pillar 1</h4>
+          <div class="form-group">
+            <label class="form-label">Title</label>
+            <input type="text" id="whyTitle1" class="form-input">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Description</label>
+            <textarea id="whyDesc1" rows="3" class="form-textarea"></textarea>
+          </div>
+        </div>
+
+        <div class="admin-card">
+          <h4 style="margin-bottom: 12px; color: var(--admin-burgundy);">Pillar 2</h4>
+          <div class="form-group">
+            <label class="form-label">Title</label>
+            <input type="text" id="whyTitle2" class="form-input">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Description</label>
+            <textarea id="whyDesc2" rows="3" class="form-textarea"></textarea>
+          </div>
+        </div>
+
+        <div class="admin-card">
+          <h4 style="margin-bottom: 12px; color: var(--admin-burgundy);">Pillar 3</h4>
+          <div class="form-group">
+            <label class="form-label">Title</label>
+            <input type="text" id="whyTitle3" class="form-input">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Description</label>
+            <textarea id="whyDesc3" rows="3" class="form-textarea"></textarea>
+          </div>
+        </div>
+
+        <div class="admin-card">
+          <h4 style="margin-bottom: 12px; color: var(--admin-burgundy);">Pillar 4</h4>
+          <div class="form-group">
+            <label class="form-label">Title</label>
+            <input type="text" id="whyTitle4" class="form-input">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Description</label>
+            <textarea id="whyDesc4" rows="3" class="form-textarea"></textarea>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. STYLE DIARY & INSTAGRAM VIEW -->
+    <section id="section-diary" class="admin-section-view" style="display: none;">
+      <div class="admin-header">
+        <div>
+          <h1>THE AQUARIA STYLE DIARY (Visual Gallery)</h1>
+          <p style="color: var(--admin-muted); font-size: 0.9rem;">Change Instagram feed lookbook photos, tags, and captions.</p>
+        </div>
+        <button class="admin-btn admin-btn-primary" onclick="saveStyleDiary(event)">Save Style Diary</button>
+      </div>
+
+      <div id="diaryInputsContainer">
+        <!-- Rendered by admin.js -->
+      </div>
+    </section>
+
+    <!-- 8. CUSTOMER REVIEWS VIEW -->
+    <section id="section-reviews" class="admin-section-view" style="display: none;">
+      <div class="admin-header">
+        <div>
+          <h1>Customer Reviews Manager</h1>
+          <p style="color: var(--admin-muted); font-size: 0.9rem;">Update customer testimonials, names, cities, and feedback wordings.</p>
+        </div>
+        <button class="admin-btn admin-btn-primary" onclick="saveReviews(event)">Save Reviews</button>
+      </div>
+
+      <div id="reviewsInputsContainer">
+        <!-- Rendered by admin.js -->
+      </div>
+    </section>
+
+    <!-- 9. CONTACT & ATELIER DETAILS VIEW -->
+    <section id="section-contact" class="admin-section-view" style="display: none;">
+      <div class="admin-header">
+        <div>
+          <h1>Contact & Atelier Information</h1>
+          <p style="color: var(--admin-muted); font-size: 0.9rem;">Edit direct phone, WhatsApp concierge link, email, physical showroom address, and operating hours.</p>
+        </div>
+        <button class="admin-btn admin-btn-primary" onclick="saveContactDetails(event)">Save Contact Details</button>
+      </div>
+
+      <div class="admin-card">
+        <h3 class="card-title" style="margin-bottom: 20px;">Client Care & Showroom Details</h3>
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">Phone Support Number</label>
+            <input type="text" id="contactPhone" class="form-input" placeholder="+91 98765 43210">
+            <span class="form-help">Displayed as clickable phone link for customers</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">WhatsApp Concierge Number</label>
+            <input type="text" id="contactWhatsapp" class="form-input" placeholder="+91 98765 43210">
+            <span class="form-help">Generates direct WhatsApp 1-click chat link</span>
+          </div>
+
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label class="form-label">Official Concierge Email</label>
+            <input type="email" id="contactEmail" class="form-input" placeholder="concierge@aquariabrand.com">
+          </div>
+
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label class="form-label">Flagship Atelier / Physical Showroom Address</label>
+            <textarea id="contactAddress" rows="2" class="form-textarea" placeholder="AQUARIA Atelier, 100 Feet Road, Indiranagar, Bengaluru, Karnataka 560038"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Operating & Service Hours</label>
+            <input type="text" id="contactHours" class="form-input" placeholder="Monday – Saturday: 10:00 AM – 7:30 PM IST">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Response Promise / Support Note</label>
+            <input type="text" id="contactSupportNote" class="form-input" placeholder="Our personal stylists respond within 2 to 4 business hours.">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. POLICIES & GUIDES VIEW (Size Guide, Shipping, Returns, Privacy) -->
+    <section id="section-policies" class="admin-section-view" style="display: none;">
+      <div class="admin-header">
+        <div>
+          <h1>Store Policies & Fitting Guides</h1>
+          <p style="color: var(--admin-muted); font-size: 0.9rem;">Edit Size Guide, Shipping Policy, Returns & Exchanges, and Privacy Policy displayed to customers.</p>
+        </div>
+        <button class="admin-btn admin-btn-primary" onclick="savePolicies(event)">Save Policies & Guides</button>
+      </div>
+
+      <!-- Policy 1: Size Guide -->
+      <div class="admin-card">
+        <h3 class="card-title" style="margin-bottom: 18px; color: var(--admin-burgundy);">1. Size & Fitting Atelier Guide</h3>
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">Guide Title</label>
+            <input type="text" id="policyEdit_sizeTitle" class="form-input">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Subtitle</label>
+            <input type="text" id="policyEdit_sizeSubtitle" class="form-input">
+          </div>
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label class="form-label">Introductory Description</label>
+            <textarea id="policyEdit_sizeIntro" rows="2" class="form-textarea"></textarea>
+          </div>
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label class="form-label">Fitting Recommendation Tip</label>
+            <textarea id="policyEdit_sizeTip" rows="2" class="form-textarea"></textarea>
+          </div>
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label class="form-label">Handbag Proportions & Laptop Fit Guide</label>
+            <textarea id="policyEdit_sizeBagGuide" rows="3" class="form-textarea"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- Policy 2: Shipping Policy -->
+      <div class="admin-card">
+        <h3 class="card-title" style="margin-bottom: 18px; color: var(--admin-burgundy);">2. Shipping & Delivery Policy</h3>
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">Policy Title</label>
+            <input type="text" id="policyEdit_shipTitle" class="form-input">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Subtitle</label>
+            <input type="text" id="policyEdit_shipSubtitle" class="form-input">
+          </div>
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label class="form-label">Policy Details & Timelines (Bullet format supported)</label>
+            <textarea id="policyEdit_shipContent" rows="5" class="form-textarea"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- Policy 3: Returns & Exchanges -->
+      <div class="admin-card">
+        <h3 class="card-title" style="margin-bottom: 18px; color: var(--admin-burgundy);">3. Returns & Exchanges Policy</h3>
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">Policy Title</label>
+            <input type="text" id="policyEdit_retTitle" class="form-input">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Subtitle</label>
+            <input type="text" id="policyEdit_retSubtitle" class="form-input">
+          </div>
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label class="form-label">Conditions, Return Window & Refund Process</label>
+            <textarea id="policyEdit_retContent" rows="5" class="form-textarea"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- Policy 4: Privacy Policy -->
+      <div class="admin-card">
+        <h3 class="card-title" style="margin-bottom: 18px; color: var(--admin-burgundy);">4. Privacy & Data Protection Policy</h3>
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">Policy Title</label>
+            <input type="text" id="policyEdit_privTitle" class="form-input">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Subtitle</label>
+            <input type="text" id="policyEdit_privSubtitle" class="form-input">
+          </div>
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label class="form-label">Data Privacy Commitments & Security Measures</label>
+            <textarea id="policyEdit_privContent" rows="5" class="form-textarea"></textarea>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. ORDERS INBOX VIEW -->
+    <section id="section-orders" class="admin-section-view" style="display: none;">
+      <div class="admin-header">
+        <div>
+          <h1>Customer Orders Inbox</h1>
+          <p style="color: var(--admin-muted); font-size: 0.9rem;">Real-time orders placed on the storefront with contact details, items, sizes, and total amounts.</p>
+        </div>
+      </div>
+
+      <div class="admin-card">
+        <div style="overflow-x: auto;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Customer</th>
+                <th>Delivery Address</th>
+                <th>Items (with Shoe Sizes)</th>
+                <th>Total (INR)</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="ordersTableBody">
+              <!-- Populated by admin.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== PRODUCT EDIT MODAL ==================== -->
+  <div id="productModal" class="admin-modal-overlay">
+    <div class="admin-modal-box">
+      <button class="modal-close" onclick="closeProductModal()">✕</button>
+      <h3 id="modalProductTitle" style="font-family: var(--font-serif); font-size: 1.6rem; color: var(--admin-burgundy); margin-bottom: 20px;">
+        Add / Edit Product
+      </h3>
+
+      <form id="prodForm" onsubmit="saveProductForm(event)">
+        <input type="hidden" id="prodId">
+        
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">Department</label>
+            <select id="prodDept" class="form-select" onchange="onDeptChange()">
+              <option value="bags">Bags Department</option>
+              <option value="footwear">Handmade Footwear Atelier</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Category</label>
+            <select id="prodCategory" class="form-select">
+              <!-- Dynamic -->
+            </select>
+          </div>
+
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label class="form-label">Product Name</label>
+            <input type="text" id="prodName" class="form-input" required placeholder="e.g. Royal Burgundy Satchel">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Selling Price (₹ INR)</label>
+            <input type="number" id="prodPrice" class="form-input" required placeholder="e.g. 2999">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Original Price (₹ INR - Optional)</label>
+            <input type="number" id="prodOrigPrice" class="form-input" placeholder="e.g. 3499">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Badge Tag</label>
+            <input type="text" id="prodBadge" class="form-input" placeholder="e.g. Bestseller, New Arrival, Handcrafted">
+          </div>
+
+          <div class="form-group" id="footwearSizesGroup" style="display: none; grid-column: 1 / -1;">
+            <label class="form-label">Available Shoe Sizes (Comma separated)</label>
+            <input type="text" id="prodSizes" class="form-input" placeholder="36, 37, 38, 39, 40, 41">
+            <span class="form-help">Enter standard EU shoe sizes separated by commas</span>
+          </div>
+
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label class="form-label">Dimensions / Heel Profile</label>
+            <input type="text" id="prodDimensions" class="form-input" placeholder="e.g. 28 cm × 21 cm × 11 cm OR 2.5 inches block heel">
+          </div>
+
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label class="form-label">Colours (Comma separated names)</label>
+            <input type="text" id="prodColors" class="form-input" placeholder="Royal Burgundy, Blush Pink, Champagne Gold, Espresso">
+          </div>
+
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label class="form-label">Photo URL</label>
+            <input type="text" id="prodImage" class="form-input" oninput="setPreview('prodImagePreview', this.value)" required>
+            <div class="image-uploader-box">
+              <img id="prodImagePreview" class="image-preview" src="">
+              <label class="admin-btn admin-btn-secondary" style="cursor: pointer;">
+                Upload Image File
+                <input type="file" accept="image/*" style="display: none;" onchange="uploadImageForField(this, 'prodImage', 'prodImagePreview')">
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label class="form-label">Material & Craftsmanship Details</label>
+            <input type="text" id="prodMaterial" class="form-input" placeholder="e.g. Silk velvet upper, double memory foam insole">
+          </div>
+
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label class="form-label">Description</label>
+            <textarea id="prodDesc" rows="3" class="form-textarea" placeholder="Detailed product description..."></textarea>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 12px; margin-top: 24px; justify-content: flex-end;">
+          <button type="button" class="admin-btn admin-btn-secondary" onclick="closeProductModal()">Cancel</button>
+          <button type="submit" class="admin-btn admin-btn-primary">Save Product</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="adminToast" class="admin-toast"></div>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AQUARIA – Style in Every Step. Elegance in Every Carry.</title>
+  <meta name="description" content="AQUARIA – Affordable Luxury Fashion Bags & Handmade Fancy Footwear. Discover designer handbags, structured totes, and handcrafted embellished footwear in India.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%23642D40'>A</text></svg>">
+
+  <!-- Google Fonts: Cormorant Garamond (Serif luxury) & Plus Jakarta Sans (Clean modern sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ========================================================================
+       1. Announcement Bar
+       ======================================================================== -->
+  <aside class="announcement-bar" role="region" aria-label="Announcement">
+    <span>STYLE IN EVERY STEP · ELEGANCE IN EVERY CARRY · COMPLIMENTARY SHIPPING OVER ₹1,999</span>
+  </aside>
+
+  <!-- ========================================================================
+       2. Sticky Navigation Bar
+       ======================================================================== -->
+  <header class="site-header">
+    <div class="container nav-container">
+      
+      <!-- Mobile Menu Toggle Button -->
+      <button class="icon-btn mobile-menu-btn" onclick="openMobileNav()" aria-label="Open Navigation Menu">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      <!-- Brand Logo on Left -->
+      <a href="#hero" class="brand-logo" aria-label="AQUARIA Home">
+        AQUARIA
+      </a>
+
+      <!-- Desktop Nav Links: Home, Bags, Footwear, New Arrivals, Our Story, Contact -->
+      <nav class="nav-links" aria-label="Primary Navigation">
+        <a href="#hero" class="nav-link">Home</a>
+        <a href="#departments" class="nav-link" onclick="filterByDepartment('bags')">Bags</a>
+        <a href="#departments" class="nav-link" onclick="filterByDepartment('footwear')">Footwear</a>
+        <a href="#new-arrivals" class="nav-link">New Arrivals</a>
+        <a href="#story" class="nav-link">Our Story</a>
+        <a href="#contact" class="nav-link" onclick="openContactModal(); return false;">Contact</a>
+      </nav>
+
+      <!-- Action Icons: Search, Account, Shopping Bag -->
+      <div class="nav-actions">
+        <button class="icon-btn" onclick="openSearchModal()" title="Search Bags & Footwear" aria-label="Search">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+
+        <button class="icon-btn" onclick="openAccountModal()" title="My Account" aria-label="My Account">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </button>
+
+        <button class="icon-btn" onclick="filterByDepartment('all'); document.getElementById('bestsellers').scrollIntoView({behavior: 'smooth'});" title="Wishlist" aria-label="Wishlist">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+          <span id="wishlistBadge" class="badge-count" style="display: none;">0</span>
+        </button>
+
+        <button class="icon-btn" onclick="openCartDrawer()" title="Shopping Bag" aria-label="Shopping Bag">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span id="cartBadge" class="badge-count" style="display: none;">0</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       3. Homepage Hero: Editorial Handbag & Footwear
+       ======================================================================== -->
+  <section id="hero" class="hero-section">
+    <div class="hero-bg">
+      <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=2200&q=88" 
+           alt="AQUARIA Fashion Bags & Footwear Editorial Campaign" 
+           loading="eager">
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <span class="hero-tag">Affordable Luxury · Bags & Handmade Footwear</span>
+      <h1 class="hero-title">Style in Every Step.<br>Elegance in Every Carry.</h1>
+      <p class="hero-description">Discover beautiful bags and handcrafted footwear designed to complement your individual style.</p>
+      <div class="hero-buttons">
+        <a href="#departments" class="btn btn-primary" onclick="filterByDepartment('bags')">
+          EXPLORE BAGS
+        </a>
+        <a href="#departments" class="btn btn-outline-white" onclick="filterByDepartment('footwear')">
+          DISCOVER FOOTWEAR
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       4. Two Main Shopping Departments: Bags & Handmade Footwear
+       ======================================================================== -->
+  <section id="departments" class="departments-section section-padding">
+    <div class="container">
+      
+      <div class="section-header">
+        <span class="sub-tag">Two Core Ateliers</span>
+        <h2>Two Worlds of Accessible Luxury</h2>
+        <p>AQUARIA is a complete fashion accessories house bringing you architectural bags and plush handmade fancy footwear crafted for every celebration.</p>
+      </div>
+
+      <!-- Department 1: AQUARIA BAGS ("Elegance You Can Carry") -->
+      <div id="deptBagsContainer">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- Department 2: AQUARIA FOOTWEAR ("Beauty in Every Step") -->
+      <div id="deptShoesContainer">
+        <!-- Rendered dynamically -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       5. New Arrivals: "Fresh Finds at AQUARIA"
+       ======================================================================== -->
+  <section id="new-arrivals" class="new-arrivals-section section-padding">
+    <div class="container">
+      <div class="section-header">
+        <span class="sub-tag">The Latest Releases</span>
+        <h2>Fresh Finds at AQUARIA</h2>
+        <p>Explore our newest bags and handcrafted footwear styled together for modern versatility.</p>
+      </div>
+
+      <div id="newArrivalsGrid" class="arrivals-grid">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       6. Bestsellers: "Customer Favourites"
+       ======================================================================== -->
+  <section id="bestsellers" class="bestsellers-section section-padding">
+    <div class="container">
+      <div class="section-header">
+        <span class="sub-tag">Most Celebrated Pieces</span>
+        <h2>Customer Favourites</h2>
+        <p>Curated handbags, totes, and cushioned handmade footwear adored for their craftsmanship, balance, and poise.</p>
+      </div>
+
+      <!-- Filter tabs: All, Bags, Footwear -->
+      <div class="filter-bar">
+        <div class="department-filter-tabs" role="tablist">
+          <button class="dept-tab-btn active" data-dept="all" onclick="filterByDepartment('all')">All Accessories</button>
+          <button class="dept-tab-btn" data-dept="bags" onclick="filterByDepartment('bags')">Bags Department</button>
+          <button class="dept-tab-btn" data-dept="footwear" onclick="filterByDepartment('footwear')">Footwear Atelier</button>
+        </div>
+
+        <div class="sort-select-wrapper">
+          <label for="sortSelect">Sort:</label>
+          <select id="sortSelect" class="sort-select">
+            <option value="featured">Featured Edit</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="name">Alphabetical</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Products Grid -->
+      <div id="productsGrid" class="products-grid">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       7. Brand Story: "Fashion That Carries Your Story."
+       ======================================================================== -->
+  <section id="story" class="story-section section-padding">
+    <div class="container">
+      <div class="story-grid">
+        
+        <div class="story-collage">
+          <div class="story-collage-img1">
+            <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=800&q=85" 
+                 alt="AQUARIA Handbag Craftsmanship" loading="lazy">
+          </div>
+          <div class="story-collage-img2">
+            <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=800&q=85" 
+                 alt="AQUARIA Handmade Fancy Footwear" loading="lazy">
+          </div>
+        </div>
+
+        <div class="story-content">
+          <span class="story-tag">Our Philosophy</span>
+          <h2 class="story-heading">Fashion That Carries Your Story.</h2>
+          <p class="story-text">
+            At AQUARIA, we believe fashion is a reflection of individuality. From beautifully styled bags to handcrafted fancy footwear, our collections bring together elegance, creativity and everyday versatility. We celebrate the details that make every look special.
+          </p>
+          <p class="story-text" style="font-size: 0.95rem; color: var(--color-espresso-muted); margin-top: -8px;">
+            Whether pairing a structured Royal Burgundy satchel with tailored workwear or slipping into memory-foam embellished sandals for a family celebration, AQUARIA designs are created to walk and carry with you everywhere.
+          </p>
+          <div style="margin-top: 32px; display: flex; gap: 14px;">
+            <button class="btn btn-primary" onclick="filterByDepartment('bags')">Explore Bags</button>
+            <button class="btn btn-secondary" onclick="filterByDepartment('footwear')">Explore Footwear</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       8. Why AQUARIA (4 Brand Highlights)
+       ======================================================================== -->
+  <section class="why-section section-padding">
+    <div class="container">
+      <div class="section-header">
+        <span class="sub-tag">The AQUARIA Promise</span>
+        <h2>Why Discerning Tastemakers Choose Us</h2>
+        <p>Four cornerstones of craft and accessible luxury that define every piece we create.</p>
+      </div>
+
+      <div id="whyAquariaGrid" class="why-grid">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       9. Customer Reviews: "Loved by Our Customers."
+       ======================================================================== -->
+  <section class="reviews-section section-padding">
+    <div class="container">
+      <div class="section-header">
+        <span class="sub-tag">Client Reflections</span>
+        <h2>Loved by Our Customers.</h2>
+        <p>Honest impressions from customers who carry our bags and dance in our handmade footwear across India.</p>
+      </div>
+
+      <div id="reviewsGrid" class="reviews-grid">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <p class="sample-notice">
+        * Sample customer reviews presented as placeholders during website development.
+      </p>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       10. Instagram Gallery: "THE AQUARIA STYLE DIARY"
+       ======================================================================== -->
+  <section class="instagram-section section-padding">
+    <div class="container">
+      <div class="instagram-banner">
+        <span class="sub-tag">Social Lookbook</span>
+        <h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 400; margin-top: 8px;">THE AQUARIA STYLE DIARY</h2>
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="instagram-handle">
+          @aquaria.official
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </a>
+      </div>
+    </div>
+
+    <div id="styleDiaryGrid" class="instagram-grid">
+      <!-- Rendered dynamically -->
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       11. Newsletter: "Stay in Style with AQUARIA."
+       ======================================================================== -->
+  <section class="newsletter-banner">
+    <div class="container">
+      <span class="sub-tag" style="color: var(--color-gold-light); font-size: 0.74rem; letter-spacing: 0.22em; text-transform: uppercase;">VIP Society Dispatches</span>
+      <h3>Stay in Style with AQUARIA.</h3>
+      <p>Subscribe to receive preview access to limited-edition handmade footwear drops, festive bag edits, and exclusive styling invitations.</p>
+      <form class="newsletter-inline-form" onsubmit="handleNewsletterSubmit(event)">
+        <input type="email" class="newsletter-inline-input" placeholder="Enter your email address" required aria-label="Email address">
+        <button type="submit" class="newsletter-inline-btn">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       12. Footer
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      
+      <div class="footer-top">
+        
+        <!-- Brand & Tagline -->
+        <div class="footer-brand">
+          <a href="#hero" class="brand-logo" style="color: #FFFFFF;">
+            AQUARIA
+          </a>
+          <p class="footer-tagline">"Style in Every Step. Elegance in Every Carry."</p>
+          <p class="footer-desc">
+            AQUARIA is an affordable luxury fashion accessories brand celebrating beautiful bags and handcrafted fancy footwear.
+          </p>
+          <div class="social-links">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-link" title="Instagram" aria-label="Instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" class="social-link" title="Pinterest" aria-label="Pinterest">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="4" x2="12" y2="20"></line>
+                <path d="M8 8a4 4 0 0 1 8 0c0 3-2 5-4 5s-2-2-2-2"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Shop Bags -->
+        <div>
+          <h4 class="footer-heading">Shop Bags</h4>
+          <ul class="footer-menu">
+            <li><a href="#bestsellers" onclick="filterByDeptAndCategory('bags', 'handbags')">Handbags</a></li>
+            <li><a href="#bestsellers" onclick="filterByDeptAndCategory('bags', 'tote-bags')">Tote Bags</a></li>
+            <li><a href="#bestsellers" onclick="filterByDeptAndCategory('bags', 'shoulder-bags')">Shoulder Bags</a></li>
+            <li><a href="#bestsellers" onclick="filterByDeptAndCategory('bags', 'crossbody-bags')">Crossbody Bags</a></li>
+            <li><a href="#bestsellers" onclick="filterByDeptAndCategory('bags', 'office-bags')">Office Bags</a></li>
+            <li><a href="#bestsellers" onclick="filterByDeptAndCategory('bags', 'travel-bags')">Travel Bags</a></li>
+          </ul>
+        </div>
+
+        <!-- Shop Footwear -->
+        <div>
+          <h4 class="footer-heading">Shop Footwear</h4>
+          <ul class="footer-menu">
+            <li><a href="#bestsellers" onclick="filterByDeptAndCategory('footwear', 'fancy-sandals')">Fancy Sandals</a></li>
+            <li><a href="#bestsellers" onclick="filterByDeptAndCategory('footwear', 'embellished-footwear')">Embellished Footwear</a></li>
+            <li><a href="#bestsellers" onclick="filterByDeptAndCategory('footwear', 'handmade-flats')">Handmade Flats</a></li>
+            <li><a href="#bestsellers" onclick="filterByDeptAndCategory('footwear', 'party-wear')">Party Wear</a></li>
+            <li><a href="#bestsellers" onclick="filterByDeptAndCategory('footwear', 'ethnic-footwear')">Ethnic Juttis</a></li>
+            <li><a href="#bestsellers" onclick="filterByDeptAndCategory('footwear', 'occasion-wear')">Occasion Wear</a></li>
+          </ul>
+        </div>
+
+        <!-- Customer Care & Policies -->
+        <div>
+          <h4 class="footer-heading">Client Care</h4>
+          <ul class="footer-menu">
+            <li><a href="#story">About Us</a></li>
+            <li><a href="#contact" onclick="openContactModal(); return false;">Contact</a></li>
+            <li><a href="#size-guide" onclick="openPolicyModal('sizeGuide'); return false;">Size Guide</a></li>
+            <li><a href="#shipping" onclick="openPolicyModal('shipping'); return false;">Shipping Policy</a></li>
+            <li><a href="#returns" onclick="openPolicyModal('returns'); return false;">Returns & Exchanges</a></li>
+            <li><a href="#privacy" onclick="openPolicyModal('privacy'); return false;">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom">
+        <div>
+          © 2026 AQUARIA Fashion Accessories Co. All rights reserved.
+        </div>
+        <div style="display: flex; gap: 16px;">
+          <span>Royal Burgundy · Blush Pink · Champagne Gold</span>
+          <span>·</span>
+          <span>Mumbai · New Delhi · Bengaluru</span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       Slide-Over Shopping Bag Drawer
+       ======================================================================== -->
+  <div id="drawerBackdrop" class="drawer-backdrop" aria-hidden="true"></div>
+
+  <div id="cartDrawer" class="cart-drawer" role="dialog" aria-modal="true" aria-label="Shopping Bag">
+    <div class="cart-header">
+      <h3>Your Shopping Bag</h3>
+      <button class="icon-btn" onclick="closeCartDrawer()" aria-label="Close Bag">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div id="shippingBar" class="shipping-bar-container">
+      <!-- Shipping tracker bar injected dynamically -->
+    </div>
+
+    <div id="cartItemsList" class="cart-items-list">
+      <!-- Cart items injected dynamically -->
+    </div>
+
+    <div id="cartFooter" class="cart-footer">
+      <div style="margin-bottom: 16px;">
+        <div style="display: flex; gap: 8px;">
+          <input type="text" id="cartPromoInput" placeholder="Voucher Code (Try AQUARIA10)" style="flex: 1; padding: 8px 12px; font-size: 0.8rem; border: 1px solid var(--color-porcelain-dark); border-radius: 2px; text-transform: uppercase;">
+          <button class="btn btn-secondary" style="padding: 8px 14px; font-size: 0.72rem;" onclick="applyPromoCode()">Apply</button>
+        </div>
+      </div>
+
+      <div class="cart-summary-row">
+        <span>Subtotal</span>
+        <span id="cartSubtotalValue">₹0</span>
+      </div>
+      <div id="cartDiscountRow" class="cart-summary-row" style="display: none; color: var(--color-burgundy); font-weight: 600;">
+        <span>Voucher Discount (10%)</span>
+        <span id="cartDiscountValue">-₹0</span>
+      </div>
+      <div class="cart-summary-row">
+        <span>Estimated Delivery</span>
+        <span id="cartShippingValue">Complimentary</span>
+      </div>
+      <div class="cart-summary-total">
+        <span>Total Payable</span>
+        <span id="cartTotalValue">₹0</span>
+      </div>
+
+      <button class="btn btn-primary" style="width: 100%; padding: 15px;" onclick="openCheckoutModal()">
+        Proceed to Checkout
+      </button>
+      
+      <div style="text-align: center; margin-top: 10px; font-size: 0.72rem; color: var(--color-espresso-light);">
+        🔒 256-bit Secure Checkout · Ready for Razorpay
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       Mobile Navigation Drawer
+       ======================================================================== -->
+  <div id="mobileNavDrawer" class="mobile-nav-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation" style="position: fixed; top: 0; left: 0; width: 85%; max-width: 340px; height: 100%; background: var(--color-porcelain); z-index: 101; display: flex; flex-direction: column; transform: translateX(-100%); transition: transform var(--transition-smooth); box-shadow: 10px 0 40px rgba(53,39,42,0.15);">
+    <div style="padding: 24px; border-bottom: 1px solid var(--color-porcelain-dark); display: flex; align-items: center; justify-content: space-between;">
+      <span class="brand-logo" style="font-size: 1.5rem;">AQUARIA</span>
+      <button class="icon-btn" onclick="closeMobileNav()" aria-label="Close menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div style="padding: 32px 24px; display: flex; flex-direction: column; gap: 20px;">
+      <a href="#hero" class="nav-link" style="font-family: var(--font-serif); font-size: 1.45rem;" onclick="closeMobileNav()">Home</a>
+      <a href="#departments" class="nav-link" style="font-family: var(--font-serif); font-size: 1.45rem;" onclick="closeMobileNav(); filterByDepartment('bags');">Shop Bags</a>
+      <a href="#departments" class="nav-link" style="font-family: var(--font-serif); font-size: 1.45rem;" onclick="closeMobileNav(); filterByDepartment('footwear');">Shop Footwear</a>
+      <a href="#new-arrivals" class="nav-link" style="font-family: var(--font-serif); font-size: 1.45rem;" onclick="closeMobileNav()">New Arrivals</a>
+      <a href="#story" class="nav-link" style="font-family: var(--font-serif); font-size: 1.45rem;" onclick="closeMobileNav()">Our Story</a>
+      <a href="#contact" class="nav-link" style="font-family: var(--font-serif); font-size: 1.45rem;" onclick="closeMobileNav(); openContactModal();">Contact</a>
+    </div>
+
+    <div style="margin-top: auto; padding: 24px; border-top: 1px solid var(--color-porcelain-dark);">
+      <p style="font-family: var(--font-serif); font-size: 1.1rem; color: var(--color-burgundy); margin-bottom: 4px;">"Style in Every Step. Elegance in Every Carry."</p>
+      <span style="font-size: 0.76rem; color: var(--color-espresso-light);">Bags & Handmade Footwear</span>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       Quick View Modal (With Footwear Sizes & Bag Details)
+       ======================================================================== -->
+  <div id="quickViewModal" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Product Quick View">
+    <div class="modal-box">
+      <button class="modal-close-btn" onclick="closeModal('quickViewModal')" aria-label="Close dialog">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div id="quickViewContent">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       Client Care & Policies Modal (Size Guide, Shipping, Returns, Privacy)
+       ======================================================================== -->
+  <div id="policiesModal" class="modal-overlay" role="dialog" aria-modal="true" aria-label="AQUARIA Policies & Guides">
+    <div class="modal-box" style="max-width: 780px; padding: 36px;">
+      <button class="modal-close-btn" onclick="closeModal('policiesModal')" aria-label="Close dialog">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <!-- Policy Tabs Navigation -->
+      <div style="display: flex; gap: 8px; flex-wrap: wrap; border-bottom: 2px solid var(--color-porcelain-dark); padding-bottom: 12px; margin-bottom: 24px;">
+        <button class="pill-btn active policy-tab-btn" data-policy="sizeGuide" onclick="switchPolicyTab('sizeGuide')">Size Guide</button>
+        <button class="pill-btn policy-tab-btn" data-policy="shipping" onclick="switchPolicyTab('shipping')">Shipping Policy</button>
+        <button class="pill-btn policy-tab-btn" data-policy="returns" onclick="switchPolicyTab('returns')">Returns & Exchanges</button>
+        <button class="pill-btn policy-tab-btn" data-policy="privacy" onclick="switchPolicyTab('privacy')">Privacy Policy</button>
+      </div>
+
+      <!-- Tab 1: Size Guide -->
+      <div id="policyPane_sizeGuide" class="policy-tab-pane">
+        <span class="sub-tag" style="font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-gold); font-weight: 600;">Fitting Atelier</span>
+        <h3 id="policySizeTitle" style="font-family: var(--font-serif); font-size: 1.85rem; color: var(--color-burgundy); margin: 6px 0 6px 0;">AQUARIA Size & Fitting Atelier</h3>
+        <p id="policySizeSubtitle" style="font-size: 0.88rem; color: var(--color-espresso-muted); margin-bottom: 12px; font-weight: 500;">Handmade Footwear & Handbag Proportions Guide</p>
+        <p id="policySizeIntro" style="font-size: 0.88rem; color: var(--color-espresso-muted); line-height: 1.6; margin-bottom: 16px;">
+          AQUARIA fancy footwear is lasted to standard Indian/European sizing with generous double-layer memory foam padding for extraordinary festive and everyday comfort.
+        </p>
+
+        <h4 style="font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-espresso); font-weight: 600; margin-bottom: 8px;">Footwear Size Conversion</h4>
+        <table class="size-table">
+          <thead>
+            <tr>
+              <th>IND / UK Size</th>
+              <th>EU Size</th>
+              <th>Foot Length (cm)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>IND 3</td><td>EU 36</td><td>22.5 cm</td></tr>
+            <tr><td>IND 4</td><td>EU 37</td><td>23.2 cm</td></tr>
+            <tr><td>IND 5</td><td>EU 38</td><td>24.0 cm</td></tr>
+            <tr><td>IND 6</td><td>EU 39</td><td>24.7 cm</td></tr>
+            <tr><td>IND 7</td><td>EU 40</td><td>25.5 cm</td></tr>
+            <tr><td>IND 8</td><td>EU 41</td><td>26.2 cm</td></tr>
+          </tbody>
+        </table>
+
+        <div style="margin-top: 18px; padding: 12px 14px; background: var(--color-blush-light); border-left: 3px solid var(--color-burgundy); font-size: 0.8rem; color: var(--color-espresso-muted);">
+          <strong>Fitting Recommendation:</strong> <span id="policySizeFittingTip">If you are between sizes or have broader feet, we recommend choosing one size up for slip-ons and ethnic juttis.</span>
+        </div>
+
+        <div style="margin-top: 22px; padding-top: 16px; border-top: 1px solid var(--color-porcelain-dark);">
+          <h4 style="font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-espresso); font-weight: 600; margin-bottom: 8px;">Handbag Capacity & Proportions Guide</h4>
+          <div id="policySizeBagGuide" style="font-size: 0.85rem; color: var(--color-espresso-muted); line-height: 1.7; white-space: pre-line;">
+• Petite / Crossbody: Fits phones up to 6.7", keys, cardholder, lip balm
+• Shoulder / Satchel: Fits mini iPad, small diary, sunglasses case, cosmetics
+• Tote / Brief: Accommodates laptops up to 15.6", planner, water bottle
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2: Shipping Policy -->
+      <div id="policyPane_shipping" class="policy-tab-pane" style="display: none;">
+        <span class="sub-tag" style="font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-gold); font-weight: 600;">Logistics &amp; Care</span>
+        <h3 id="policyShippingTitle" style="font-family: var(--font-serif); font-size: 1.85rem; color: var(--color-burgundy); margin: 6px 0 6px 0;">Complimentary Insured Shipping</h3>
+        <p id="policyShippingSubtitle" style="font-size: 0.88rem; color: var(--color-espresso-muted); margin-bottom: 20px; font-weight: 500;">Delivering Luxury to Every Pin Code Across India</p>
+        <div id="policyShippingContent" style="font-size: 0.87rem; color: var(--color-espresso-muted); line-height: 1.85;">
+
+          <div style="display: flex; align-items: flex-start; gap: 14px; background: #FFF8F0; border-left: 3px solid var(--color-gold); padding: 14px 18px; border-radius: 2px; margin-bottom: 22px;">
+            <span style="font-size: 1.3rem; flex-shrink: 0;">🎁</span>
+            <div>
+              <strong style="font-size: 0.9rem; color: var(--color-burgundy);">FREE Shipping on orders above &#x20B9;1,999</strong><br>
+              <span>Orders below &#x20B9;1,999 attract a flat delivery fee of only <strong>&#x20B9;149</strong> across India.</span>
+            </div>
+          </div>
+
+          <div style="margin-bottom: 22px; padding-bottom: 18px; border-bottom: 1px solid var(--color-porcelain-dark);">
+            <h4 style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--color-burgundy); font-weight: 700; margin: 0 0 10px 0;">&#x1F4E6; Dispatch Timeline</h4>
+            <p style="margin: 0 0 8px 0;">Every AQUARIA order is <strong>hand-inspected and quality-checked</strong> at our atelier before it is carefully packed and dispatched.</p>
+            <p style="margin: 0;">Orders are typically dispatched within <strong>24&#x2013;48 business hours</strong> of payment confirmation. Orders placed on Sundays or public holidays are dispatched the following business day.</p>
+          </div>
+
+          <div style="margin-bottom: 22px; padding-bottom: 18px; border-bottom: 1px solid var(--color-porcelain-dark);">
+            <h4 style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--color-burgundy); font-weight: 700; margin: 0 0 12px 0;">&#x1F4CD; Estimated Delivery Times</h4>
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.84rem; margin-bottom: 10px;">
+              <thead>
+                <tr style="background: var(--color-porcelain); text-align: left;">
+                  <th style="padding: 9px 12px; font-weight: 600; border: 1px solid var(--color-porcelain-dark); color: var(--color-espresso);">Destination</th>
+                  <th style="padding: 9px 12px; font-weight: 600; border: 1px solid var(--color-porcelain-dark); color: var(--color-espresso);">Estimated Delivery</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td style="padding: 8px 12px; border: 1px solid var(--color-porcelain-dark);">Metro Cities <small style="color: #888;">(Mumbai, Delhi NCR, Bengaluru, Hyderabad, Chennai, Kolkata, Pune)</small></td><td style="padding: 8px 12px; border: 1px solid var(--color-porcelain-dark);"><strong>2&#x2013;4 Business Days</strong></td></tr>
+                <tr style="background: var(--color-porcelain);"><td style="padding: 8px 12px; border: 1px solid var(--color-porcelain-dark);">Tier 2 &amp; Tier 3 Cities</td><td style="padding: 8px 12px; border: 1px solid var(--color-porcelain-dark);"><strong>3&#x2013;5 Business Days</strong></td></tr>
+                <tr><td style="padding: 8px 12px; border: 1px solid var(--color-porcelain-dark);">Remote Areas &amp; North East India</td><td style="padding: 8px 12px; border: 1px solid var(--color-porcelain-dark);"><strong>5&#x2013;8 Business Days</strong></td></tr>
+              </tbody>
+            </table>
+            <p style="margin: 0; font-size: 0.78rem; color: #999; font-style: italic;">Estimates are indicative and may vary during festive seasons or due to courier network conditions.</p>
+          </div>
+
+          <div style="margin-bottom: 22px; padding-bottom: 18px; border-bottom: 1px solid var(--color-porcelain-dark);">
+            <h4 style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--color-burgundy); font-weight: 700; margin: 0 0 10px 0;">&#x1F510; Fully Tracked &amp; Insured</h4>
+            <p style="margin: 0 0 8px 0;">Every order ships with a <strong>live tracking number</strong> shared via SMS and WhatsApp immediately after dispatch.</p>
+            <p style="margin: 0;">All parcels are <strong>100% insured</strong> against loss or transit damage. If anything goes wrong in transit, we reship or refund at no cost to you.</p>
+          </div>
+
+          <div style="margin-bottom: 22px; padding-bottom: 18px; border-bottom: 1px solid var(--color-porcelain-dark);">
+            <h4 style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--color-burgundy); font-weight: 700; margin: 0 0 10px 0;">&#x2728; Signature AQUARIA Packaging</h4>
+            <p style="margin: 0 0 8px 0;">Your order arrives in our <strong>signature AQUARIA dust covers</strong> nestled inside a <strong>rigid branded presentation box</strong> &#x2014; every purchase is gift-ready from the moment it arrives.</p>
+            <p style="margin: 0;">Complimentary gift wrapping and personalised message cards are available on request &#x2014; mention it in the Order Notes at checkout.</p>
+          </div>
+
+          <div>
+            <h4 style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--color-burgundy); font-weight: 700; margin: 0 0 10px 0;">&#x1F4DE; Shipping Support</h4>
+            <p style="margin: 0;">For any shipping queries, write to <strong>concierge@aquariabrand.com</strong> or WhatsApp us. Our team responds within 2&#x2013;4 business hours, Monday to Saturday, 10 AM&#x2013;7:30 PM.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Tab 3: Returns & Exchanges -->
+      <div id="policyPane_returns" class="policy-tab-pane" style="display: none;">
+        <span class="sub-tag" style="font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-gold); font-weight: 600;">Hassle-Free Concierge</span>
+        <h3 id="policyReturnsTitle" style="font-family: var(--font-serif); font-size: 1.85rem; color: var(--color-burgundy); margin: 6px 0 6px 0;">7-Day Returns &amp; Exchanges</h3>
+        <p id="policyReturnsSubtitle" style="font-size: 0.88rem; color: var(--color-espresso-muted); margin-bottom: 20px; font-weight: 500;">Your Complete Peace of Mind, Guaranteed</p>
+        <div id="policyReturnsContent" style="font-size: 0.87rem; color: var(--color-espresso-muted); line-height: 1.85;">
+
+          <div style="display: flex; align-items: flex-start; gap: 14px; background: #FFF0F3; border-left: 3px solid var(--color-burgundy); padding: 14px 18px; border-radius: 2px; margin-bottom: 22px;">
+            <span style="font-size: 1.3rem; flex-shrink: 0;">&#x1F91D;</span>
+            <div>
+              <strong style="font-size: 0.9rem; color: var(--color-burgundy);">Doorstep Reverse Pickup &#x2014; Completely Complimentary</strong><br>
+              <span>No courier trips. We arrange free reverse pickup from your doorstep for all eligible returns and size exchanges.</span>
+            </div>
+          </div>
+
+          <div style="margin-bottom: 22px; padding-bottom: 18px; border-bottom: 1px solid var(--color-porcelain-dark);">
+            <h4 style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--color-burgundy); font-weight: 700; margin: 0 0 10px 0;">&#x1F4C5; Return Window</h4>
+            <p style="margin: 0 0 8px 0;">We accept returns and exchange requests within <strong>7 days from the date of delivery</strong>.</p>
+            <p style="margin: 0;">To initiate a return or exchange, email <strong>concierge@aquariabrand.com</strong> or WhatsApp us with your Order ID and reason. Our team will respond within 24 hours to arrange pickup.</p>
+          </div>
+
+          <div style="margin-bottom: 22px; padding-bottom: 18px; border-bottom: 1px solid var(--color-porcelain-dark);">
+            <h4 style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--color-burgundy); font-weight: 700; margin: 0 0 10px 0;">&#x2705; Eligibility Conditions</h4>
+            <p style="margin: 0 0 10px 0;">To be eligible for a return or exchange, items must meet the following conditions:</p>
+            <ul style="margin: 0; padding-left: 20px; line-height: 2;">
+              <li>Unworn, unused and in original condition</li>
+              <li>Original tags attached and intact</li>
+              <li>Original dust bag and presentation box included</li>
+              <li>No signs of wear, perfume, staining or damage</li>
+              <li>Footwear tried on only on soft carpeted surfaces (never outdoors)</li>
+            </ul>
+          </div>
+
+          <div style="margin-bottom: 22px; padding-bottom: 18px; border-bottom: 1px solid var(--color-porcelain-dark);">
+            <h4 style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--color-burgundy); font-weight: 700; margin: 0 0 10px 0;">&#x274C; Non-Returnable Items</h4>
+            <ul style="margin: 0; padding-left: 20px; line-height: 2;">
+              <li>Items purchased during Final Sale or clearance events</li>
+              <li>Customised, monogrammed or personalised products</li>
+              <li>Items showing clear signs of use, damage or missing original packaging</li>
+            </ul>
+          </div>
+
+          <div style="margin-bottom: 22px; padding-bottom: 18px; border-bottom: 1px solid var(--color-porcelain-dark);">
+            <h4 style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--color-burgundy); font-weight: 700; margin: 0 0 10px 0;">&#x1F4B3; Refund Process</h4>
+            <p style="margin: 0 0 8px 0;">Once your returned item is received and quality-checked at our atelier, your refund is processed within <strong>24&#x2013;48 business hours</strong>.</p>
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.84rem;">
+              <thead>
+                <tr style="background: var(--color-porcelain);">
+                  <th style="padding: 8px 12px; border: 1px solid var(--color-porcelain-dark); text-align: left; font-weight: 600;">Refund Method</th>
+                  <th style="padding: 8px 12px; border: 1px solid var(--color-porcelain-dark); text-align: left; font-weight: 600;">Timeline</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td style="padding: 8px 12px; border: 1px solid var(--color-porcelain-dark);">UPI / Bank Transfer</td><td style="padding: 8px 12px; border: 1px solid var(--color-porcelain-dark);">1&#x2013;2 Business Days</td></tr>
+                <tr style="background: var(--color-porcelain);"><td style="padding: 8px 12px; border: 1px solid var(--color-porcelain-dark);">Credit / Debit Card</td><td style="padding: 8px 12px; border: 1px solid var(--color-porcelain-dark);">3&#x2013;5 Business Days</td></tr>
+                <tr><td style="padding: 8px 12px; border: 1px solid var(--color-porcelain-dark);">AQUARIA Store Credit</td><td style="padding: 8px 12px; border: 1px solid var(--color-porcelain-dark);">Instant</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div>
+            <h4 style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--color-burgundy); font-weight: 700; margin: 0 0 10px 0;">&#x1F4DE; Returns Support</h4>
+            <p style="margin: 0;">Email <strong>concierge@aquariabrand.com</strong> or WhatsApp us with your Order ID. We are available Monday to Saturday, 10 AM&#x2013;7:30 PM IST.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Tab 4: Privacy Policy -->
+      <div id="policyPane_privacy" class="policy-tab-pane" style="display: none;">
+        <span class="sub-tag" style="font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-gold); font-weight: 600;">Confidentiality Commitment</span>
+        <h3 id="policyPrivacyTitle" style="font-family: var(--font-serif); font-size: 1.85rem; color: var(--color-burgundy); margin: 6px 0 6px 0;">Privacy &amp; Data Protection Policy</h3>
+        <p id="policyPrivacySubtitle" style="font-size: 0.88rem; color: var(--color-espresso-muted); margin-bottom: 20px; font-weight: 500;">Strict Confidentiality &amp; 256-Bit Encrypted Security</p>
+        <div id="policyPrivacyContent" style="font-size: 0.87rem; color: var(--color-espresso-muted); line-height: 1.85;">
+
+          <div style="display: flex; align-items: flex-start; gap: 14px; background: #F0F5FF; border-left: 3px solid #4A6FA5; padding: 14px 18px; border-radius: 2px; margin-bottom: 22px;">
+            <span style="font-size: 1.3rem; flex-shrink: 0;">&#x1F512;</span>
+            <div>
+              <strong style="font-size: 0.9rem; color: #2C4A7A;">Your privacy is our highest priority.</strong><br>
+              <span>AQUARIA operates with complete transparency. We collect only the minimum data necessary and <strong>never sell or trade your personal information</strong> under any circumstances.</span>
+            </div>
+          </div>
+
+          <div style="margin-bottom: 22px; padding-bottom: 18px; border-bottom: 1px solid var(--color-porcelain-dark);">
+            <h4 style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--color-burgundy); font-weight: 700; margin: 0 0 10px 0;">&#x1F4CB; Information We Collect</h4>
+            <p style="margin: 0 0 10px 0;">When you shop with AQUARIA, we collect the following information solely to process and deliver your order:</p>
+            <ul style="margin: 0; padding-left: 20px; line-height: 2;">
+              <li>Full name and delivery address</li>
+              <li>Mobile number and email address (for order updates and tracking)</li>
+              <li>Payment confirmation reference (we do <strong>not</strong> store card numbers or CVV)</li>
+              <li>Order history and product preferences (to improve your shopping experience)</li>
+              <li>Device and browser data via cookies (for website performance only)</li>
+            </ul>
+          </div>
+
+          <div style="margin-bottom: 22px; padding-bottom: 18px; border-bottom: 1px solid var(--color-porcelain-dark);">
+            <h4 style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--color-burgundy); font-weight: 700; margin: 0 0 10px 0;">&#x2705; How We Use Your Information</h4>
+            <ul style="margin: 0; padding-left: 20px; line-height: 2;">
+              <li>Processing and fulfilling your orders</li>
+              <li>Dispatching tracking information and delivery updates</li>
+              <li>Sending order confirmations and customer service communications</li>
+              <li>Sending AQUARIA newsletters (only if you opt-in; unsubscribe anytime)</li>
+              <li>Improving website experience and product recommendations</li>
+            </ul>
+          </div>
+
+          <div style="margin-bottom: 22px; padding-bottom: 18px; border-bottom: 1px solid var(--color-porcelain-dark);">
+            <h4 style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--color-burgundy); font-weight: 700; margin: 0 0 10px 0;">&#x1F510; Data Security &amp; Encryption</h4>
+            <p style="margin: 0 0 8px 0;">All transactions on the AQUARIA website are processed through <strong>RBI-approved payment gateways</strong> (Razorpay / Cashfree) using <strong>256-bit SSL encryption</strong>.</p>
+            <p style="margin: 0 0 8px 0;">We <strong>never store</strong> your credit card, debit card numbers, CVV or UPI PIN on our servers at any time.</p>
+            <p style="margin: 0;">Our website is secured with industry-standard HTTPS protocols and regular security audits.</p>
+          </div>
+
+          <div style="margin-bottom: 22px; padding-bottom: 18px; border-bottom: 1px solid var(--color-porcelain-dark);">
+            <h4 style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--color-burgundy); font-weight: 700; margin: 0 0 10px 0;">&#x1F6AB; Zero Third-Party Data Sharing</h4>
+            <p style="margin: 0 0 8px 0;">AQUARIA will <strong>never sell, rent, exchange or share</strong> your personal information with any third-party marketing company, data broker or advertising network.</p>
+            <p style="margin: 0;">Your data is shared only with our trusted logistics partners (Blue Dart / Delhivery) solely for the purpose of delivering your order.</p>
+          </div>
+
+          <div style="margin-bottom: 22px; padding-bottom: 18px; border-bottom: 1px solid var(--color-porcelain-dark);">
+            <h4 style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--color-burgundy); font-weight: 700; margin: 0 0 10px 0;">&#x1F91D; Your Rights</h4>
+            <p style="margin: 0 0 10px 0;">You have full rights over your personal data stored with AQUARIA:</p>
+            <ul style="margin: 0; padding-left: 20px; line-height: 2;">
+              <li><strong>Access:</strong> Request a copy of all data we hold about you</li>
+              <li><strong>Correction:</strong> Update any inaccurate information</li>
+              <li><strong>Deletion:</strong> Request complete erasure of your account data</li>
+              <li><strong>Unsubscribe:</strong> Opt out of marketing communications at any time</li>
+            </ul>
+            <p style="margin: 10px 0 0 0;">To exercise any of these rights, email us at <strong>concierge@aquariabrand.com</strong> and we will respond within 48 business hours.</p>
+          </div>
+
+          <div>
+            <h4 style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--color-burgundy); font-weight: 700; margin: 0 0 8px 0;">&#x1F4C5; Policy Last Updated</h4>
+            <p style="margin: 0; font-size: 0.82rem; color: #999;">This Privacy Policy was last updated in November 2026. We reserve the right to update this policy and will notify registered customers of significant changes via email.</p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       Search Modal
+       ======================================================================== -->
+  <div id="searchModal" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Search Catalog">
+    <div class="modal-box" style="max-width: 650px; padding: 36px;">
+      <button class="modal-close-btn" onclick="closeModal('searchModal')" aria-label="Close search">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div style="position: relative; margin-bottom: 24px;">
+        <input type="text" id="searchInput" placeholder="Search bags, footwear, heel styles, or colors…" 
+               oninput="handleSearch(this.value)"
+               style="width: 100%; background: transparent; border: none; border-bottom: 2px solid var(--color-burgundy); padding: 12px 40px 12px 4px; font-size: 1.25rem; font-family: var(--font-serif); color: var(--color-espresso); outline: none;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); color: var(--color-burgundy);">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </div>
+
+      <div id="searchResultsList" style="max-height: 340px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px;">
+        <!-- Results injected dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       Account Modal (Demo Login / Orders)
+       ======================================================================== -->
+  <div id="accountModal" class="modal-overlay" role="dialog" aria-modal="true" aria-label="My Account">
+    <div class="modal-box" style="max-width: 480px; padding: 36px;">
+      <button class="modal-close-btn" onclick="closeModal('accountModal')" aria-label="Close account dialog">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div style="text-align: center; margin-bottom: 24px;">
+        <span class="brand-logo" style="font-size: 1.6rem;">AQUARIA</span>
+        <h4 style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--color-espresso); margin-top: 8px;">AQUARIA Privilege Account</h4>
+        <p style="font-size: 0.84rem; color: var(--color-espresso-muted);">Manage your bag and footwear orders, wishlist, and exclusive member discounts.</p>
+      </div>
+
+      <form onsubmit="event.preventDefault(); closeModal('accountModal'); showToast('Welcome back to your AQUARIA Account.');">
+        <div style="margin-bottom: 14px;">
+          <label style="display: block; font-size: 0.74rem; text-transform: uppercase; font-weight: 600; margin-bottom: 6px;">Email or Mobile</label>
+          <input type="text" class="form-control" placeholder="e.g. priya@example.com" required style="width: 100%; padding: 10px; border: 1px solid var(--color-porcelain-dark); border-radius: 2px;">
+        </div>
+        <div style="margin-bottom: 18px;">
+          <label style="display: block; font-size: 0.74rem; text-transform: uppercase; font-weight: 600; margin-bottom: 6px;">Password</label>
+          <input type="password" class="form-control" placeholder="••••••••" required style="width: 100%; padding: 10px; border: 1px solid var(--color-porcelain-dark); border-radius: 2px;">
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 13px;">Sign In to Account</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       Checkout Modal (Demonstration Interface ready for Razorpay)
+       ======================================================================== -->
+  <div id="checkoutModal" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Checkout">
+    <div class="modal-box" style="max-width: 760px; padding: 38px;">
+      <button class="modal-close-btn" onclick="closeModal('checkoutModal')" aria-label="Close checkout">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px;">
+        <div>
+          <h3 style="font-family: var(--font-serif); font-size: 1.45rem; color: var(--color-burgundy); margin-bottom: 18px;">Shipping & Contact Information</h3>
+          
+          <form id="checkoutForm" onsubmit="handleCheckoutSubmit(event)">
+            <div style="margin-bottom: 12px;">
+              <label style="display: block; font-size: 0.72rem; text-transform: uppercase; font-weight: 600; margin-bottom: 4px;">Full Name</label>
+              <input type="text" name="fullName" required placeholder="e.g. Radhika Sharma" style="width: 100%; padding: 9px 12px; border: 1px solid var(--color-porcelain-dark); border-radius: 2px;">
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px;">
+              <div>
+                <label style="display: block; font-size: 0.72rem; text-transform: uppercase; font-weight: 600; margin-bottom: 4px;">Email</label>
+                <input type="email" name="email" required placeholder="radhika@example.com" style="width: 100%; padding: 9px 12px; border: 1px solid var(--color-porcelain-dark); border-radius: 2px;">
+              </div>
+              <div>
+                <label style="display: block; font-size: 0.72rem; text-transform: uppercase; font-weight: 600; margin-bottom: 4px;">Phone</label>
+                <input type="tel" name="phone" required placeholder="+91 98765 43210" style="width: 100%; padding: 9px 12px; border: 1px solid var(--color-porcelain-dark); border-radius: 2px;">
+              </div>
+            </div>
+
+            <div style="margin-bottom: 12px;">
+              <label style="display: block; font-size: 0.72rem; text-transform: uppercase; font-weight: 600; margin-bottom: 4px;">Delivery Address</label>
+              <input type="text" name="address" required placeholder="Flat 402, Royal Residency, Indiranagar" style="width: 100%; padding: 9px 12px; border: 1px solid var(--color-porcelain-dark); border-radius: 2px;">
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px;">
+              <div>
+                <label style="display: block; font-size: 0.72rem; text-transform: uppercase; font-weight: 600; margin-bottom: 4px;">City</label>
+                <input type="text" name="city" required placeholder="Bengaluru" style="width: 100%; padding: 9px 12px; border: 1px solid var(--color-porcelain-dark); border-radius: 2px;">
+              </div>
+              <div>
+                <label style="display: block; font-size: 0.72rem; text-transform: uppercase; font-weight: 600; margin-bottom: 4px;">PIN Code</label>
+                <input type="text" name="pincode" required placeholder="560038" style="width: 100%; padding: 9px 12px; border: 1px solid var(--color-porcelain-dark); border-radius: 2px;">
+              </div>
+            </div>
+
+            <div style="margin-bottom: 18px;">
+              <label style="display: block; font-size: 0.72rem; text-transform: uppercase; font-weight: 600; margin-bottom: 4px;">Indian Payment Gateway</label>
+              <select style="width: 100%; padding: 9px 12px; border: 1px solid var(--color-porcelain-dark); border-radius: 2px; cursor: pointer;">
+                <option value="razorpay">Razorpay (UPI, Google Pay, PhonePe, Cards, NetBanking)</option>
+                <option value="cod">Cash on Express Delivery</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 14px;">
+              Place Order Now
+            </button>
+          </form>
+        </div>
+
+        <div>
+          <div id="checkoutSummaryContent" style="background: var(--color-white); padding: 22px; border: 1px solid var(--color-porcelain-dark); border-radius: 2px;">
+            <!-- Injected dynamically -->
+          </div>
+
+          <div style="margin-top: 16px; padding: 12px 14px; background: var(--color-blush-light); border-left: 3px solid var(--color-gold); font-size: 0.76rem; color: var(--color-espresso-muted); line-height: 1.5;">
+            <strong>Demonstration Notice:</strong><br>
+            AQUARIA website frontend is integrated with sample product data and is fully pre-wired for Indian Payment Gateways (such as Razorpay or Cashfree). No real cards are charged in this preview.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       Contact Concierge Modal
+       ======================================================================== -->
+  <div id="contactModal" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Contact Concierge">
+    <div class="modal-box" style="max-width: 860px; padding: 38px;">
+      <button class="modal-close-btn" onclick="closeModal('contactModal')" aria-label="Close contact">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div style="text-align: center; margin-bottom: 28px;">
+        <span class="sub-tag" style="font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-gold); font-weight: 600;">Personal Concierge & Atelier</span>
+        <h3 style="font-family: var(--font-serif); font-size: 2.1rem; color: var(--color-burgundy); margin-top: 4px;">Speak With AQUARIA</h3>
+        <p style="font-size: 0.88rem; color: var(--color-espresso-muted); max-width: 520px; margin: 6px auto 0 auto;">
+          Inquire about bag dimensions, footwear sizing, custom festive gifting, or connect directly with our client advisors.
+        </p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; align-items: start;">
+        
+        <!-- Left: Direct Contact Information (Live & Editable from Backend) -->
+        <div style="background: var(--color-white); border: 1px solid var(--color-porcelain-dark); padding: 26px; border-radius: 2px;">
+          <h4 style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--color-espresso); margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--color-porcelain-dark);">
+            Our Contact Details
+          </h4>
+
+          <div style="display: flex; flex-direction: column; gap: 16px; font-size: 0.86rem;">
+            
+            <!-- Phone -->
+            <div style="display: flex; gap: 12px; align-items: flex-start;">
+              <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--color-burgundy-subtle); color: var(--color-burgundy); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              </div>
+              <div>
+                <span style="display: block; font-size: 0.7rem; text-transform: uppercase; font-weight: 600; color: var(--color-gold); letter-spacing: 0.1em;">Phone Support</span>
+                <a id="contactPhoneLink" href="tel:+919876543210" style="color: var(--color-espresso); font-weight: 600;">
+                  <span id="contactPhoneDisplay">+91 98765 43210</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- WhatsApp Direct -->
+            <div style="display: flex; gap: 12px; align-items: flex-start;">
+              <div style="width: 32px; height: 32px; border-radius: 50%; background: #E8F5E9; color: #2E7D32; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+              </div>
+              <div>
+                <span style="display: block; font-size: 0.7rem; text-transform: uppercase; font-weight: 600; color: #2E7D32; letter-spacing: 0.1em;">WhatsApp Concierge</span>
+                <a id="contactWhatsappLink" href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" style="color: var(--color-espresso); font-weight: 600;">
+                  <span id="contactWhatsappDisplay">Chat on WhatsApp</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div style="display: flex; gap: 12px; align-items: flex-start;">
+              <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--color-burgundy-subtle); color: var(--color-burgundy); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              </div>
+              <div>
+                <span style="display: block; font-size: 0.7rem; text-transform: uppercase; font-weight: 600; color: var(--color-gold); letter-spacing: 0.1em;">Email Concierge</span>
+                <a id="contactEmailLink" href="mailto:concierge@aquariabrand.com" style="color: var(--color-burgundy); font-weight: 500;">
+                  <span id="contactEmailDisplay">concierge@aquariabrand.com</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Address -->
+            <div style="display: flex; gap: 12px; align-items: flex-start;">
+              <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--color-burgundy-subtle); color: var(--color-burgundy); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              </div>
+              <div>
+                <span style="display: block; font-size: 0.7rem; text-transform: uppercase; font-weight: 600; color: var(--color-gold); letter-spacing: 0.1em;">Flagship Atelier</span>
+                <p id="contactAddressDisplay" style="color: var(--color-espresso-muted); line-height: 1.5; margin-top: 2px;">
+                  AQUARIA Atelier, 100 Feet Road, Indiranagar, Bengaluru, Karnataka 560038
+                </p>
+              </div>
+            </div>
+
+            <!-- Working Hours -->
+            <div style="display: flex; gap: 12px; align-items: flex-start;">
+              <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--color-burgundy-subtle); color: var(--color-burgundy); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              </div>
+              <div>
+                <span style="display: block; font-size: 0.7rem; text-transform: uppercase; font-weight: 600; color: var(--color-gold); letter-spacing: 0.1em;">Operating Hours</span>
+                <p id="contactHoursDisplay" style="color: var(--color-espresso-muted); margin-top: 2px;">
+                  Monday – Saturday: 10:00 AM – 7:30 PM IST
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+          <div style="margin-top: 20px; padding: 12px 14px; background: var(--color-blush-light); border-left: 3px solid var(--color-burgundy); font-size: 0.78rem; color: var(--color-espresso-muted);">
+            <span id="contactNoteDisplay">Our personal stylists and client advisors respond within 2 to 4 business hours.</span>
+          </div>
+        </div>
+
+        <!-- Right: Inquiry Form -->
+        <div>
+          <form onsubmit="handleContactSubmit(event)">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+              <div>
+                <label style="display: block; font-size: 0.72rem; text-transform: uppercase; font-weight: 600; margin-bottom: 4px;">Name</label>
+                <input type="text" name="name" required placeholder="Your name" style="width: 100%; padding: 10px 12px; border: 1px solid var(--color-porcelain-dark); border-radius: 2px;">
+              </div>
+              <div>
+                <label style="display: block; font-size: 0.72rem; text-transform: uppercase; font-weight: 600; margin-bottom: 4px;">Email</label>
+                <input type="email" name="email" required placeholder="your@email.com" style="width: 100%; padding: 10px 12px; border: 1px solid var(--color-porcelain-dark); border-radius: 2px;">
+              </div>
+            </div>
+
+            <div style="margin-bottom: 12px;">
+              <label style="display: block; font-size: 0.72rem; text-transform: uppercase; font-weight: 600; margin-bottom: 4px;">Inquiry Department</label>
+              <select style="width: 100%; padding: 10px 12px; border: 1px solid var(--color-porcelain-dark); border-radius: 2px; cursor: pointer;">
+                <option>Handmade Footwear Sizing & Styling Advice</option>
+                <option>Handbag Specifications & Capacity</option>
+                <option>Bridal & Festive Gifting Packages</option>
+                <option>Delivery Logistics & Tracking</option>
+                <option>Press & Editorial Collaborations</option>
+              </select>
+            </div>
+
+            <div style="margin-bottom: 16px;">
+              <label style="display: block; font-size: 0.72rem; text-transform: uppercase; font-weight: 600; margin-bottom: 4px;">Message</label>
+              <textarea rows="4" required placeholder="How may our stylists assist you?" style="width: 100%; padding: 10px 12px; border: 1px solid var(--color-porcelain-dark); border-radius: 2px;"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 14px;">
+              Send Message to Stylist
+            </button>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification Stack -->
+  <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+  <!-- Scripts -->
+  <script src="js/products.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
