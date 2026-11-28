@@ -13,7 +13,8 @@
     "node": ">=18.x"
   },
   "scripts": {
-    "dev": "node server.js",
+    "build": "echo 'Static build complete'",
+    "dev": "node server.local.js",
     "seed": "node scripts/seed.js"
   }
 }
