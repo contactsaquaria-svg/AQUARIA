@@ -1,11 +1,21 @@
 {
   "version": 2,
-  "buildCommand": "npm run build",
-  "outputDirectory": ".",
-  "cleanUrls": true,
-  "rewrites": [
-    { "source": "/admin", "destination": "/admin.html" },
-    { "source": "/admin/", "destination": "/admin.html" }
+  "builds": [
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "api/**/*.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    { "src": "/admin", "dest": "/admin.html" },
+    { "src": "/admin/", "dest": "/admin.html" },
+    { "src": "/api/(.*)", "dest": "/api/$1" },
+    { "src": "/(.*\\.(css|js|html|png|jpg|jpeg|webp|svg|ico|json))", "dest": "/$1" },
+    { "src": "/", "dest": "/index.html" }
   ],
   "headers": [
     {
@@ -16,10 +26,5 @@
         { "key": "Access-Control-Allow-Headers", "value": "Content-Type, Authorization" }
       ]
     }
-  ],
-  "functions": {
-    "api/**/*.js": {
-      "runtime": "nodejs18.x"
-    }
-  }
+  ]
 }
